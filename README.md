@@ -32,10 +32,11 @@ Useful if you don't need all the stuff that the redux framework gives you.
         dispatcher.dispatch({type: 'PLUS_ONE', content: this.props.counter})
       }
       render() {
-        return <div>
+        return (
+          <div>
             <div>Click count: {this.props.counter}</div>
             <button onClick={this.plusOne}>Add 1</button>
-          </div>
+          </div>)
       }
     }
     // Build the reducers as a map ACTION:(state, action) => state
@@ -51,5 +52,5 @@ Useful if you don't need all the stuff that the redux framework gives you.
   ```
 
 ### Why
-This package was born while I was learning react and redux. I love the principles behind Redux but I don't like boilerplate and overcomplicated code so I decided to try to write a simple implementation of the redux principles.
+This package was born while I was learning react and redux. I love the principles behind Redux but I don't like boilerplate and overcomplicated code so I decided to try to write a simple implementation of the redux pattern.
 Feel free to use it or to continue to use the [Real One](https://github.com/reactjs/redux).
