@@ -27,6 +27,10 @@ Useful if you don't need all the stuff that the redux framework gives you.
 
     // this is a PORC (Plain Old React Component)
     class MyCounter extends React.Component {
+      constructor() {
+        super()
+        this.plusOne = this.plusOne.bind(this)
+      }
       plusOne() {
         // Dispacth the action (the content is optional)
         dispatcher.dispatch({type: 'PLUS_ONE', content: this.props.counter})
