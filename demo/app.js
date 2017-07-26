@@ -9888,7 +9888,7 @@ var reducers = (0, _buildReducer2.default)({
 
 var INITIAL_STATE = { counter: 0 };
 
-var App = (0, _withState2.default)(MyCounter, [reducers], INITIAL_STATE);
+var App = (0, _withState2.default)([reducers], INITIAL_STATE)(MyCounter);
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
@@ -22457,46 +22457,48 @@ function combineReducers(reducers, state, action) {
   return newState;
 }
 
-function withState(WrappedComponent) {
-  var reducers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  var initialState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+function withState() {
+  var reducers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var initialState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-  return function (_React$Component) {
-    _inherits(WithState, _React$Component);
+  return function (WrappedComponent) {
+    return function (_React$Component) {
+      _inherits(WithState, _React$Component);
 
-    function WithState(props) {
-      _classCallCheck(this, WithState);
+      function WithState(props) {
+        _classCallCheck(this, WithState);
 
-      var _this = _possibleConstructorReturn(this, (WithState.__proto__ || Object.getPrototypeOf(WithState)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (WithState.__proto__ || Object.getPrototypeOf(WithState)).call(this, props));
 
-      _this.state = { innerState: initialState };
-      return _this;
-    }
-
-    _createClass(WithState, [{
-      key: 'componentWillMount',
-      value: function componentWillMount() {
-        var _this2 = this;
-
-        this.regId = _dispatcher2.default.register(function (action) {
-          var nextState = combineReducers(reducers, _this2.state.innerState, action);
-          _this2.setState({ innerState: nextState });
-        });
+        _this.state = { innerState: initialState };
+        return _this;
       }
-    }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
-        _dispatcher2.default.unregister(this.regId);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return _react2.default.createElement(WrappedComponent, _extends({}, this.state.innerState, this.props));
-      }
-    }]);
 
-    return WithState;
-  }(_react2.default.Component);
+      _createClass(WithState, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+          var _this2 = this;
+
+          this.regId = _dispatcher2.default.register(function (action) {
+            var nextState = combineReducers(reducers, _this2.state.innerState, action);
+            _this2.setState({ innerState: nextState });
+          });
+        }
+      }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+          _dispatcher2.default.unregister(this.regId);
+        }
+      }, {
+        key: 'render',
+        value: function render() {
+          return _react2.default.createElement(WrappedComponent, _extends({}, this.state.innerState, this.props));
+        }
+      }]);
+
+      return WithState;
+    }(_react2.default.Component);
+  };
 }
 
 exports.default = withState;

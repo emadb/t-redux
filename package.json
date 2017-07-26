@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel ./lib --out-dir ./dist --ignore __tests__",
-    "build-demo": "babel ./example/app.jsx --out-dir .",
+    "buildDemo": "webpack --config ./demo/webpack.config.js",
     "test": "jest"
   },
   "jest": {

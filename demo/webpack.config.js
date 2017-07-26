@@ -1,14 +1,15 @@
 const path = require('path')
 
 module.exports = {
-    entry: './App.jsx',
+    entry: path.resolve(__dirname, 'App.jsx'),
     output: {
-      filename: 'app.js',
+      path: path.resolve(__dirname, '.'),
+      filename: './app.js',
     },
     resolve: {
       modules: [
         path.resolve('./'),
-        path.resolve('../node_modules'),
+        path.resolve('./node_modules'),
       ],
       extensions: ['.js', '.jsx'],
     },

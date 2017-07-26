@@ -28,7 +28,7 @@ const reducers = buildReducer({
 
 const INITIAL_STATE = { counter: 0 }
 
-const App = withState(MyCounter, [reducers], INITIAL_STATE)
+const App = withState([reducers], INITIAL_STATE)(MyCounter)
 
 
 
