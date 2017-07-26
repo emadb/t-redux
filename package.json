@@ -1,6 +1,6 @@
 {
   "name": "t-redux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A mini redux pattern implementation",
   "main": "dist/index.js",
   "scripts": {
