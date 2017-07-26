@@ -32,7 +32,6 @@ env
 .sass-cache
 .temp
 .idea/**/*
-dist/
 .DS_Store
 .vscode
 jsconfig.json

@@ -2,7 +2,7 @@
   "name": "t-redux",
   "version": "1.0.0",
   "description": "A mini redux pattern implementation",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel ./lib --out-dir ./dist --ignore __tests__",
     "buildDemo": "webpack --config ./demo/webpack.config.js",
