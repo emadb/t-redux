@@ -1,9 +1,8 @@
 import React from 'react'
-import WithState from '../../lib/WithState'
+import withState from '../../lib/withState'
 
 function Foo() {
   return <div>Hello</div>
 }
 
-export default WithState(Foo, [], {})
-
+export default withState(Foo, [], {})
