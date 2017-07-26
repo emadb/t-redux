@@ -1,7 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WithState should wrap 1`] = `
+exports[`withState should wrap 1`] = `
 <div>
   Hello
+</div>
+`;
+
+exports[`withState supports partial application  1`] = `
+<div>
+  Hello, 
+  Dan
+  !
+</div>
+`;
+
+exports[`withState supports partial application  2`] = `
+<div>
+  Ciao, 
+  Dan
+  !
 </div>
 `;

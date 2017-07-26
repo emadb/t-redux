@@ -5,4 +5,4 @@ function Foo() {
   return <div>Hello</div>
 }
 
-export default withState(Foo, [], {})
+export default withState([], {})(Foo)
