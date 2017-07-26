@@ -47,8 +47,8 @@ Useful if you don't need all the stuff that the redux framework gives you.
     // Define the initial state
     const INITIAL_STATE = { counter: 0 }
 
-    // export the wrapped component passing the reducers and the initial state1
-    export default withState(MyCounter, [reducers], INITIAL_STATE)
+    // export the wrapped component passing the reducers and the initial state
+    export default withState([reducers], INITIAL_STATE)(MyCounter)
   ```
 
 ### Why
