@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 import {Component} from 'react'
 import buildReducer from '../lib/buildReducer'
-import WithState from '../lib/WithState'
+import withState from '../lib/withState'
 import dispatcher from '../lib/dispatcher'
 
 class MyCounter extends React.Component {
@@ -28,7 +28,7 @@ const reducers = buildReducer({
 
 const INITIAL_STATE = { counter: 0 }
 
-const App = WithState(MyCounter, [reducers], INITIAL_STATE)
+const App = withState(MyCounter, [reducers], INITIAL_STATE)
 
 
 

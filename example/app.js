@@ -9823,9 +9823,9 @@ var _buildReducer = __webpack_require__(185);
 
 var _buildReducer2 = _interopRequireDefault(_buildReducer);
 
-var _WithState = __webpack_require__(186);
+var _withState = __webpack_require__(186);
 
-var _WithState2 = _interopRequireDefault(_WithState);
+var _withState2 = _interopRequireDefault(_withState);
 
 var _dispatcher = __webpack_require__(82);
 
@@ -9838,10 +9838,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-console.log(_buildReducer2.default);
-
-// this is a PORC (Plain Old React Component)
 
 var MyCounter = function (_React$Component) {
   _inherits(MyCounter, _React$Component);
@@ -9858,7 +9854,6 @@ var MyCounter = function (_React$Component) {
   _createClass(MyCounter, [{
     key: 'plusOne',
     value: function plusOne() {
-      // Dispacth the action (the content is optional)
       _dispatcher2.default.dispatch({ type: 'PLUS_ONE', content: this.props.counter });
     }
   }, {
@@ -9884,8 +9879,6 @@ var MyCounter = function (_React$Component) {
 
   return MyCounter;
 }(_react2.default.Component);
-// Build the reducers as a map ACTION:(state, action) => state
-
 
 var reducers = (0, _buildReducer2.default)({
   'PLUS_ONE': function PLUS_ONE(state, action) {
@@ -9893,11 +9886,9 @@ var reducers = (0, _buildReducer2.default)({
   }
 });
 
-// Define the initial state
-var INITIAL_STATE = { counter: 0
+var INITIAL_STATE = { counter: 0 };
 
-  // export the wrapped component passing the reducers and the initial state1
-};var App = (0, _WithState2.default)(MyCounter, [reducers], INITIAL_STATE);
+var App = (0, _withState2.default)(MyCounter, [reducers], INITIAL_STATE);
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
