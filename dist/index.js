@@ -3,8 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.buildReducer = exports.dispatcher = exports.withState = undefined;
 
-var _withState = require('./withState.jsx');
+var _withState = require('./withState');
 
 var _withState2 = _interopRequireDefault(_withState);
 
@@ -18,4 +19,6 @@ var _buildReducer2 = _interopRequireDefault(_buildReducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = { withState: _withState2.default, dispatcher: _dispatcher2.default, buildReducer: _buildReducer2.default };
+exports.withState = _withState2.default;
+exports.dispatcher = _dispatcher2.default;
+exports.buildReducer = _buildReducer2.default;

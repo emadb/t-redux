@@ -9819,17 +9819,7 @@ var _react = __webpack_require__(81);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _buildReducer = __webpack_require__(185);
-
-var _buildReducer2 = _interopRequireDefault(_buildReducer);
-
-var _withState = __webpack_require__(186);
-
-var _withState2 = _interopRequireDefault(_withState);
-
-var _dispatcher = __webpack_require__(82);
-
-var _dispatcher2 = _interopRequireDefault(_dispatcher);
+var _lib = __webpack_require__(185);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9838,6 +9828,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import buildReducer from '../lib/buildReducer'
+// import withState from '../lib/withState'
+// import dispatcher from '../lib/dispatcher'
 
 var MyCounter = function (_React$Component) {
   _inherits(MyCounter, _React$Component);
@@ -9854,7 +9847,7 @@ var MyCounter = function (_React$Component) {
   _createClass(MyCounter, [{
     key: 'plusOne',
     value: function plusOne() {
-      _dispatcher2.default.dispatch({ type: 'PLUS_ONE', content: this.props.counter });
+      _lib.dispatcher.dispatch({ type: 'PLUS_ONE', content: this.props.counter });
     }
   }, {
     key: 'render',
@@ -9880,7 +9873,7 @@ var MyCounter = function (_React$Component) {
   return MyCounter;
 }(_react2.default.Component);
 
-var reducers = (0, _buildReducer2.default)({
+var reducers = (0, _lib.buildReducer)({
   'PLUS_ONE': function PLUS_ONE(state, action) {
     return { counter: state.counter + 1 };
   }
@@ -9888,7 +9881,7 @@ var reducers = (0, _buildReducer2.default)({
 
 var INITIAL_STATE = { counter: 0 };
 
-var App = (0, _withState2.default)([reducers], INITIAL_STATE)(MyCounter);
+var App = (0, _lib.withState)([reducers], INITIAL_STATE)(MyCounter);
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
@@ -22389,34 +22382,25 @@ module.exports = ReactDOMInvalidARIAHook;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var createReducer = function createReducer(reducer) {
-  var projectorFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (s) {
-    return s;
-  };
+exports.buildReducer = exports.dispatcher = exports.withState = undefined;
 
-  reducer.project = projectorFn;
-  return reducer;
-};
+var _withState = __webpack_require__(186);
 
-var buildReducer = function buildReducer(mapOrFn) {
-  var projectorFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (s) {
-    return s;
-  };
+var _withState2 = _interopRequireDefault(_withState);
 
-  if (typeof mapOrFn === 'function') {
-    return createReducer(mapOrFn, projectorFn);
-  }
-  var reducer = function reducer(state, action) {
-    if (action.type in mapOrFn) {
-      return mapOrFn[action.type](state, action);
-    }
-    return state;
-  };
-  reducer.project = projectorFn;
-  return reducer;
-};
+var _dispatcher = __webpack_require__(82);
 
-exports.default = buildReducer;
+var _dispatcher2 = _interopRequireDefault(_dispatcher);
+
+var _buildReducer = __webpack_require__(187);
+
+var _buildReducer2 = _interopRequireDefault(_buildReducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.withState = _withState2.default;
+exports.dispatcher = _dispatcher2.default;
+exports.buildReducer = _buildReducer2.default;
 
 /***/ }),
 /* 186 */
@@ -22502,6 +22486,45 @@ function withState() {
 }
 
 exports.default = withState;
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var createReducer = function createReducer(reducer) {
+  var projectorFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (s) {
+    return s;
+  };
+
+  reducer.project = projectorFn;
+  return reducer;
+};
+
+var buildReducer = function buildReducer(mapOrFn) {
+  var projectorFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (s) {
+    return s;
+  };
+
+  if (typeof mapOrFn === 'function') {
+    return createReducer(mapOrFn, projectorFn);
+  }
+  var reducer = function reducer(state, action) {
+    if (action.type in mapOrFn) {
+      return mapOrFn[action.type](state, action);
+    }
+    return state;
+  };
+  reducer.project = projectorFn;
+  return reducer;
+};
+
+exports.default = buildReducer;
 
 /***/ })
 /******/ ]);

@@ -1,9 +1,7 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import {Component} from 'react'
-import buildReducer from '../lib/buildReducer'
-import withState from '../lib/withState'
-import dispatcher from '../lib/dispatcher'
+import {buildReducer, withState, dispatcher} from '../lib'
 
 class MyCounter extends React.Component {
   constructor() {
