@@ -11,19 +11,19 @@ Useful if you don't need all the stuff that the redux framework gives you.
 
 2) Import in your files
   ```
-  import {WithState, dispatcher, buildReducer} from 't-redux'
+  import {withState, dispatcher, buildReducer} from 't-redux'
   ```
 
 3) What you get is
   - A High Order Component to wrap your React components
-  - An action dispatcher 
+  - An action dispatcher
   - An utility function to build the reducers
 
 ### One file example
 
   ```javascript
     // import the needed modules
-    import {WithState, dispatcher, buildReducer} from 't-redux'
+    import {withState, dispatcher, buildReducer} from 't-redux'
 
     // this is a PORC (Plain Old React Component)
     class MyCounter extends React.Component {
@@ -48,7 +48,7 @@ Useful if you don't need all the stuff that the redux framework gives you.
     const INITIAL_STATE = { counter: 0 }
 
     // export the wrapped component passing the reducers and the initial state1
-    export default WithState(MyCounter, [reducers], INITIAL_STATE)
+    export default withState(MyCounter, [reducers], INITIAL_STATE)
   ```
 
 ### Why
