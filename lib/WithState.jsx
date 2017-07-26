@@ -9,8 +9,8 @@ function combineReducers(reducers, state, action){
   return newState
 }
 
-function WithState(WrappedComponent, reducers = [], initialState = {}) {
-  return class withState extends React.Component {
+function withState(WrappedComponent, reducers = [], initialState = {}) {
+  return class WithState extends React.Component {
     constructor(props) {
       super(props)
       this.state = { innerState: initialState }
@@ -31,4 +31,4 @@ function WithState(WrappedComponent, reducers = [], initialState = {}) {
   }
 }
 
-export default WithState
+export default withState
