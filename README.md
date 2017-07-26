@@ -6,7 +6,7 @@ Useful if you don't need all the stuff that the redux framework gives you.
 ### How to use it
 1) Install the library
   ```
-  npm install mini-redux
+  npm install t-redux
   ```
 
 2) Import in your files
