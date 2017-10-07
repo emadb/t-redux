@@ -55,6 +55,25 @@ Useful if you don't need all the stuff that the redux framework gives you.
     export default withState([reducers], INITIAL_STATE)(MyCounter)
   ```
 
+### API
+
+#### `buildReducer(map)`
+Build the reducers map. The map is composed by an action type and a reducer function. The reducer function is  f: (state, action) -> state
+The state is changed applying the action type reducer.
+
+#### `dispatcher`
+Is an object with three methods:
+##### `register(fn)`
+Register the function fn in the list of subscribed functions. Returns the id of the registered entry.
+##### `unregister(id)`
+Remove the function from the list of subscribers.
+##### `dispatch(action)`
+Call every subscribed functions passing the action
+
+#### `withState(reducers, initialState)`
+Connect the magic. Returns a function that it can be used to connect a component with the reducers and the initial state.
+
+
 ### Why
 This package was born while I was learning react and redux. I love the principles behind Redux but I don't like boilerplate and overcomplicated code so I decided to try to write a simple implementation of the redux pattern.
 Feel free to use it or to continue to use the [Real One](https://github.com/reactjs/redux).
