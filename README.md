@@ -77,4 +77,4 @@ Connect the magic. Returns a function that it can be used to connect a component
 ### Why
 This package was born while I was learning react and redux. I love the principles behind Redux but I don't like boilerplate and overcomplicated code so I decided to try to write a simple implementation of the redux pattern.
 Feel free to use it or to continue to use the [Real One](https://github.com/reactjs/redux).
-@MicheleBertoli gave a [terrific presentation](https://speakerdeck.com/michelebertoli/setstate-ftw) on how to manage state in react applications. `t-redux` is one of the available options.
+[Michele Bertoli](https://github.com/MicheleBertoli) gave a [terrific presentation](https://speakerdeck.com/michelebertoli/setstate-ftw) on how to manage state in react applications. `t-redux` is one of the available options.
