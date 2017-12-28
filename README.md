@@ -51,8 +51,12 @@ Useful if you don't need all the stuff that the redux framework gives you.
     // Define the initial state
     const INITIAL_STATE = { counter: 0 }
 
+    const middlewareFn = (state, action) => {
+      // inspect the state or the action. Useful for logging and debugging or to store the events.
+    }
+
     // export the wrapped component passing the reducers and the initial state
-    export default withState([reducers], INITIAL_STATE)(MyCounter)
+    export default withState([reducers], INITIAL_STATE, middlewareFn)(MyCounter)
   ```
 
 ### API
@@ -70,8 +74,8 @@ Remove the function from the list of subscribers.
 ##### `dispatch(action)`
 Call every subscribed functions passing the action
 
-#### `withState(reducers, initialState)`
-Connect the magic. Returns a function that it can be used to connect a component with the reducers and the initial state.
+#### `withState(reducers, initialState, middleware)`
+Connect the magic. Returns a function that it can be used to connect a component with the reducers and the initial state. After the initial state it accept a function that will be called before applying the action.
 
 
 ### Why
