@@ -28,6 +28,8 @@
   "author": "Emanuele DelBono <emanuele@codiceplastico.com>",
   "license": "MIT",
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "react": "15.6.1"
   },
   "devDependencies": {

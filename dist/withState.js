@@ -35,6 +35,7 @@ function combineReducers(reducers, state, action) {
 function withState() {
   var reducers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var initialState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var middleware = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
 
   return function (WrappedComponent) {
     return function (_React$Component) {
@@ -55,6 +56,7 @@ function withState() {
           var _this2 = this;
 
           this.regId = _dispatcher2.default.register(function (action) {
+            middleware(_this2.state.innerState, action);
             var nextState = combineReducers(reducers, _this2.state.innerState, action);
             _this2.setState({ innerState: nextState });
           });
