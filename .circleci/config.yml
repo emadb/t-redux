@@ -7,14 +7,13 @@ dependencies:
   pre:
     - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 jobs:
-  test: 
+  -test: 
     - image: circleci/node:8.10
     
   working_directory: ~/repo
 
   steps:
     - checkout
-
     # Download and cache dependencies
     - restore_cache:
         keys:
@@ -30,33 +29,9 @@ jobs:
         key: v1-dependencies-{{ checksum "package.json" }}
       
     - run: npm test
-
-  build:
-    docker:
-      - image: circleci/node:8.10
-      
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npm run build
-  deployment:
-    npm:
+    - run: npm run build
+    
+    - deploy
       commands:
         - npm publish
 
