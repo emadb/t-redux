@@ -3,6 +3,8 @@
 This is a mini library that implements the Redux pattern.
 Useful if you don't need all the stuff that the redux framework gives you.
 
+[![CircleCI](https://circleci.com/gh/emadb/t-redux/tree/master.svg?style=svg)](https://circleci.com/gh/emadb/t-redux/tree/master)
+
 ### How to use it
 1) Install the library
   ```
