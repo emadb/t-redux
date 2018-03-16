@@ -7,7 +7,11 @@ var subscribers = new Map();
 
 var dispatcher = {
   register: function register(subscriber) {
-    var sid = "s_" + (subscribers.size + 1);
+    var counter = 1;
+    while (subscribers.has("s_" + counter)) {
+      counter++;
+    }
+    var sid = "s_" + counter;
     subscribers.set(sid, subscriber);
     return sid;
   },
