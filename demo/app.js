@@ -9786,7 +9786,11 @@ var subscribers = new Map();
 
 var dispatcher = {
   register: function register(subscriber) {
-    var sid = "s_" + (subscribers.size + 1);
+    var counter = 1;
+    while (subscribers.has("s_" + counter)) {
+      counter++;
+    }
+    var sid = "s_" + counter;
     subscribers.set(sid, subscriber);
     return sid;
   },
@@ -9828,9 +9832,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import buildReducer from '../lib/buildReducer'
-// import withState from '../lib/withState'
-// import dispatcher from '../lib/dispatcher'
 
 var MyCounter = function (_React$Component) {
   _inherits(MyCounter, _React$Component);
@@ -22444,6 +22445,7 @@ function combineReducers(reducers, state, action) {
 function withState() {
   var reducers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var initialState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var middleware = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
 
   return function (WrappedComponent) {
     return function (_React$Component) {
@@ -22464,6 +22466,7 @@ function withState() {
           var _this2 = this;
 
           this.regId = _dispatcher2.default.register(function (action) {
+            middleware(_this2.state.innerState, action);
             var nextState = combineReducers(reducers, _this2.state.innerState, action);
             _this2.setState({ innerState: nextState });
           });
